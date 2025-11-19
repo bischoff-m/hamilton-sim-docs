@@ -1,5 +1,7 @@
 # Hamilton-Sim Documentation
 
+[GitHub Pages](https://bischoff-m.github.io/hamilton-sim-docs/)
+
 Documentation and knowledge base for `hamilton-sim`, a Julia package for
 simulating port-Hamiltonian systems.
 
@@ -53,6 +55,11 @@ quarto render docs
 ```
 
 The generated site will be in the `docs/_site` directory.
+
+## GitHub Pages Deployment
+
+This repository is configured to automatically publish documentation to GitHub
+Pages whenever you push to the `main` branch.
 
 ## License
 

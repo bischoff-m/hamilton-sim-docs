@@ -9,7 +9,7 @@
 <meta name="author" content="Marco Bischoff">
 <meta name="dcterms.date" content="2025-11-19">
 
-<title>Home – Port-Hamiltonian Simulator</title>
+<title>Basics – Port-Hamiltonian Simulator</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,41 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -106,6 +71,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -127,11 +121,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./basics.html"> 
+    <a class="nav-link active" href="./basics.html" aria-current="page"> 
 <span class="menu-text">Basics</span></a>
   </li>  
 </ul>
@@ -150,14 +144,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a>
-  <ul class="collapse">
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#preview" id="toc-preview" class="nav-link" data-scroll-target="#preview">Preview</a></li>
-  <li><a href="#build" id="toc-build" class="nav-link" data-scroll-target="#build">Build</a></li>
-  </ul></li>
+  <li><a href="#port-hamiltonian-systems" id="toc-port-hamiltonian-systems" class="nav-link active" data-scroll-target="#port-hamiltonian-systems">Port-Hamiltonian Systems</a></li>
+  <li><a href="#passivity" id="toc-passivity" class="nav-link" data-scroll-target="#passivity">Passivity</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -166,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Home</h1>
+<h1 class="title">Basics</h1>
 </div>
 
 
@@ -195,57 +184,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="welcome" class="level2">
-<h2 class="anchored" data-anchor-id="welcome">Welcome</h2>
-<p>This is a knowledge base and the documentation for <code>hamilton-sim</code>, a Julia package for simulating port-Hamiltonian systems.</p>
+<section id="port-hamiltonian-systems" class="level2">
+<h2 class="anchored" data-anchor-id="port-hamiltonian-systems">Port-Hamiltonian Systems</h2>
+<p>Linear form: <span class="math display">\[
+\dot{x} = Ax
+\]</span> where <span class="math inline">\(A\)</span> is the state space matrix(?) and <span class="math inline">\(x \in \mathbb{R}^{n}\)</span> always depends on time. In port-Hamiltonian systems: <span class="math display">\[
+\dot{x} = (J - R)Qx
+\]</span> where <span class="math inline">\(J \in \mathbb{R}^{n \times n}\)</span> is the interconnection matrix, <span class="math inline">\(R \in \mathbb{R}^{n \times n}\)</span> the dissipation matrix and <span class="math inline">\(Q \in \mathbb{R}^{n \times m}\)</span> the linear part of the state. The more general non-linear description is <span class="math display">\[
+\dot{x} = (J(x) - R(x)) \frac{dH(x)}{dx}
+\]</span> where <span class="math inline">\(\nabla H(x) = \frac{dH}{dx}(x)\)</span>. For now, we keep <span class="math inline">\(J\)</span> independent from <span class="math inline">\(x\)</span>. For specific systems it holds that <span class="math display">\[
+H(x) = \frac{1}{2} x^T Q x
+\]</span></p>
+<p>We are interested in description of dynamics, where we can influence the output. We then use the form <span class="math display">\[
+\dot{x} = Ax + Bu
+\]</span> where <span class="math inline">\(B\)</span> is the input matrix. In port-Hamiltonian systems this translates to <span class="math display">\[
+\dot{x} = (J - R)Qx + Bu
+\]</span> <span class="math display">\[
+y = B^T Qx
+\]</span> where <span class="math inline">\(u\)</span> is the input into and <span class="math inline">\(y\)</span> is the output of the system. For now we are only interested in the state <span class="math inline">\(x\)</span>, but not the output. Later the output of one system will be the input of another system.</p>
 </section>
-<section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
-<section id="prerequisites" class="level3">
-<h3 class="anchored" data-anchor-id="prerequisites">Prerequisites</h3>
-<p>To work with this repository, you’ll need:</p>
-<ol type="1">
-<li><strong>Quarto</strong> - Download and install from <a href="https://quarto.org/docs/get-started/">https://quarto.org/docs/get-started/</a>
+<section id="passivity" class="level2">
+<h2 class="anchored" data-anchor-id="passivity">Passivity</h2>
+<p>A passive system may consume and store energy, but is incapable of producing energy.</p>
+<p>Exact definition: Celledoni, E., &amp; Høiseth, E. H. (2017). <em>Energy-Preserving and Passivity-Consistent Numerical Discretization of Port-Hamiltonian Systems</em> (No.&nbsp;arXiv:1706.08621). arXiv. <a href="https://doi.org/10.48550/arXiv.1706.08621">https://doi.org/10.48550/arXiv.1706.08621</a></p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
 <ul>
-<li>Choose the installer for your operating system</li>
-<li>Verify installation: <code>quarto --version</code></li>
-</ul></li>
-<li><strong>Julia</strong> (Optional) - Required only if you want to execute Julia code blocks
+<li>A Framework for Decentralized Stabilization in Networked Energy Systems: A Passivity-Based Approach
 <ul>
-<li>Download from <a href="https://julialang.org/downloads/">https://julialang.org/downloads/</a></li>
-<li>Verify installation: <code>julia --version</code></li>
+<li>Page 82 for an example</li>
+<li>Definition 3.5 (page 40) for a linear pH system</li>
+<li>Definition A.2 (page 176) for dimensions</li>
 </ul></li>
-</ol>
-</section>
-<section id="setup" class="level3">
-<h3 class="anchored" data-anchor-id="setup">Setup</h3>
-<p>Clone this repository:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:bischoff-m/hamilton-sim-docs.git</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> hamilton-sim-docs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Quarto will automatically install any required Julia packages when rendering documents. Use the Julia REPL to add new packages as needed.</p>
-</section>
-<section id="preview" class="level3">
-<h3 class="anchored" data-anchor-id="preview">Preview</h3>
-<p>To preview the documentation locally:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Start the preview server</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview docs</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Or preview without watching for file changes</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview docs <span class="at">--no-watch-inputs</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Or preview without opening a browser</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview docs <span class="at">--no-browser</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The preview server will start and display the local URL.</p>
-</section>
-<section id="build" class="level3">
-<h3 class="anchored" data-anchor-id="build">Build</h3>
-<p>To build static HTML files:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> docs</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The generated site will be in the <code>docs/_site</code> directory.</p>
+</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

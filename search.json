@@ -1,5 +1,33 @@
 [
   {
+    "objectID": "basics.html",
+    "href": "basics.html",
+    "title": "Basics",
+    "section": "",
+    "text": "Linear form: \\[\n\\dot{x} = Ax\n\\] where \\(A\\) is the state space matrix(?) and \\(x \\in \\mathbb{R}^{n}\\) always depends on time. In port-Hamiltonian systems: \\[\n\\dot{x} = (J - R)Qx\n\\] where \\(J \\in \\mathbb{R}^{n \\times n}\\) is the interconnection matrix, \\(R \\in \\mathbb{R}^{n \\times n}\\) the dissipation matrix and \\(Q \\in \\mathbb{R}^{n \\times m}\\) the linear part of the state. The more general non-linear description is \\[\n\\dot{x} = (J(x) - R(x)) \\frac{dH(x)}{dx}\n\\] where \\(\\nabla H(x) = \\frac{dH}{dx}(x)\\). For now, we keep \\(J\\) independent from \\(x\\). For specific systems it holds that \\[\nH(x) = \\frac{1}{2} x^T Q x\n\\]\nWe are interested in description of dynamics, where we can influence the output. We then use the form \\[\n\\dot{x} = Ax + Bu\n\\] where \\(B\\) is the input matrix. In port-Hamiltonian systems this translates to \\[\n\\dot{x} = (J - R)Qx + Bu\n\\] \\[\ny = B^T Qx\n\\] where \\(u\\) is the input into and \\(y\\) is the output of the system. For now we are only interested in the state \\(x\\), but not the output. Later the output of one system will be the input of another system."
+  },
+  {
+    "objectID": "basics.html#port-hamiltonian-systems",
+    "href": "basics.html#port-hamiltonian-systems",
+    "title": "Basics",
+    "section": "",
+    "text": "Linear form: \\[\n\\dot{x} = Ax\n\\] where \\(A\\) is the state space matrix(?) and \\(x \\in \\mathbb{R}^{n}\\) always depends on time. In port-Hamiltonian systems: \\[\n\\dot{x} = (J - R)Qx\n\\] where \\(J \\in \\mathbb{R}^{n \\times n}\\) is the interconnection matrix, \\(R \\in \\mathbb{R}^{n \\times n}\\) the dissipation matrix and \\(Q \\in \\mathbb{R}^{n \\times m}\\) the linear part of the state. The more general non-linear description is \\[\n\\dot{x} = (J(x) - R(x)) \\frac{dH(x)}{dx}\n\\] where \\(\\nabla H(x) = \\frac{dH}{dx}(x)\\). For now, we keep \\(J\\) independent from \\(x\\). For specific systems it holds that \\[\nH(x) = \\frac{1}{2} x^T Q x\n\\]\nWe are interested in description of dynamics, where we can influence the output. We then use the form \\[\n\\dot{x} = Ax + Bu\n\\] where \\(B\\) is the input matrix. In port-Hamiltonian systems this translates to \\[\n\\dot{x} = (J - R)Qx + Bu\n\\] \\[\ny = B^T Qx\n\\] where \\(u\\) is the input into and \\(y\\) is the output of the system. For now we are only interested in the state \\(x\\), but not the output. Later the output of one system will be the input of another system."
+  },
+  {
+    "objectID": "basics.html#passivity",
+    "href": "basics.html#passivity",
+    "title": "Basics",
+    "section": "Passivity",
+    "text": "Passivity\nA passive system may consume and store energy, but is incapable of producing energy.\nExact definition: Celledoni, E., & Høiseth, E. H. (2017). Energy-Preserving and Passivity-Consistent Numerical Discretization of Port-Hamiltonian Systems (No. arXiv:1706.08621). arXiv. https://doi.org/10.48550/arXiv.1706.08621"
+  },
+  {
+    "objectID": "basics.html#references",
+    "href": "basics.html#references",
+    "title": "Basics",
+    "section": "References",
+    "text": "References\n\nA Framework for Decentralized Stabilization in Networked Energy Systems: A Passivity-Based Approach\n\nPage 82 for an example\nDefinition 3.5 (page 40) for a linear pH system\nDefinition A.2 (page 176) for dimensions"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Home",

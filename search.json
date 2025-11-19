@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
+    "section": "",
+    "text": "This is a knowledge base and the documentation for hamilton-sim, a Julia package for simulating port-Hamiltonian systems."
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "Home",
+    "section": "",
+    "text": "This is a knowledge base and the documentation for hamilton-sim, a Julia package for simulating port-Hamiltonian systems."
+  },
+  {
+    "objectID": "index.html#getting-started",
+    "href": "index.html#getting-started",
+    "title": "Home",
+    "section": "Getting Started",
+    "text": "Getting Started\n\nPrerequisites\nTo work with this repository, you’ll need:\n\nQuarto - Download and install from https://quarto.org/docs/get-started/\n\nChoose the installer for your operating system\nVerify installation: quarto --version\n\nJulia (Optional) - Required only if you want to execute Julia code blocks\n\nDownload from https://julialang.org/downloads/\nVerify installation: julia --version\n\n\n\n\nSetup\nClone this repository:\ngit clone git@github.com:bischoff-m/hamilton-sim-docs.git\ncd hamilton-sim-docs\nQuarto will automatically install any required Julia packages when rendering documents. Use the Julia REPL to add new packages as needed.\n\n\nPreview\nTo preview the documentation locally:\n# Start the preview server\nquarto preview docs\n\n# Or preview without watching for file changes\nquarto preview docs --no-watch-inputs\n\n# Or preview without opening a browser\nquarto preview docs --no-browser\nThe preview server will start and display the local URL.\n\n\nBuild\nTo build static HTML files:\ncd docs\nquarto render\nThe generated site will be in the docs/_site directory."
+  }
+]

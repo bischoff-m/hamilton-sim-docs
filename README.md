@@ -1,20 +1,11 @@
----
-title: "Home"
-author: "Marco Bischoff"
-date: "11/19/2025"
-engine: julia
----
+# Hamilton-Sim Documentation
 
-## Welcome
-
-This is a knowledge base and the documentation for `hamilton-sim`, a Julia
-package for simulating port-Hamiltonian systems.
+Documentation and knowledge base for `hamilton-sim`, a Julia package for
+simulating port-Hamiltonian systems.
 
 ## Getting Started
 
 ### Prerequisites
-
-To work with this repository, you'll need:
 
 1. **Quarto** - Download and install from [https://quarto.org/docs/get-started/](https://quarto.org/docs/get-started/)
    - Choose the installer for your operating system
@@ -51,15 +42,18 @@ quarto preview docs --no-watch-inputs
 quarto preview docs --no-browser
 ```
 
-The preview server will start and display the local URL.
+The preview server will start and display the local URL (typically `http://localhost:4200`).
 
 ### Build
 
 To build static HTML files:
 
 ```bash
-cd docs
-quarto render
+quarto render docs
 ```
 
 The generated site will be in the `docs/_site` directory.
+
+## License
+
+See the project repository for license information.

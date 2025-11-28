@@ -1,0 +1,49 @@
+---
+title: "Linear Port-Hamiltonian Systems"
+author: "Manuel Kleinschmager"
+date: "11/28/2025"
+engine: julia
+format:
+    html:
+        css: styles.css
+---
+
+$$
+\newcommand{\1}{1\hspace{-0,9ex}1}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\cvar}{\text{CVaR}}
+\newcommand{\var}{\text{VaR}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\T}{\mathbb{T}}
+$$
+
+## Linear port-Hamiltonian descriptor systems
+In electrical engineering applications, the need for descriptor systems arise naturally. We will use a modified version of the following Definition given by Mehrmann & Morandin in [1]. This section only consideres linear descriptor systems.
+
+::: {.qp-theorem}
+**Definition: port-Hamiltonian descriptor system**
+
+Consider a time interval $\mathbb{T}:=[0,T]\subset\mathbb{R}$, $T>0$, a state space $\mathcal{X}\subseteq\R^n$ and extended state space $\mathcal{S}:=\T\times\mathcal{X}$. A port-Hamiltonian descriptor system (or pHDAE) is a system of differential (-algebraic) equations of the form
+        \begin{align*}
+            E\dot{x} &= (J-R)\nabla H(x) - r(\nabla H(x)) + Gu + Kd,\\
+            y &= G^T\nabla H(x),\\
+            z &= K^T\nabla H(x),
+        \end{align*}
+        with a Hamiltonian function $\mathcal{H}(x):\mathcal{X}\to\R$, where $x(t)\in\mathcal{X}$ is the state, $u(t)\in\R^{m_1}, y(t)\in\R^{m_1}$, are the controllable input and output, $d(t)\in\R^{m_2}, z(t)\in\R^{m_2}$ are the uncontrollable interaction ports. 
+:::
+
+Test
+
+::: {.qp-theorem}
+**Remark**
+
+We can equivalently write
+        \begin{align*}
+            E\dot{x} + r &= (J-R)\nabla H(x) + B\tilde{u},\\
+            \tilde{y} &= B^T\nabla H(x),
+        \end{align*}
+        with $\tilde{u} = [u\; d]^T\in\R^m$, $m=m_1+m_2$, $\tilde{y} = [y\; z]^T\in\R^m$
+:::

@@ -1,0 +1,30 @@
+---
+title: "Notation & Abbreviations"
+author: "Manuel Kleinschmager"
+date: "11/28/2025"
+engine: julia
+---
+
+$$
+\newcommand{\1}{1\hspace{-0,9ex}1}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\cvar}{\text{CVaR}}
+\newcommand{\var}{\text{VaR}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\T}{\mathbb{T}}
+$$
+
+# Notations
+
+* $n\in\N$ dimension of state-space $\mathcal{X}\subseteq\R^n$
+* $m_1\in\N$ dimension of controllable input/output $u(t), y(t)$
+* $m_2\in\N$ dimension of uncontrollable interaction coupling port $d(t), z(t)$
+* $m = m_1 + m_2$ dimension of input/output $\tilde{u}(t), \tilde{y}(t)$ into system
+
+# Abbreviations
+
+* **pH** - port-Hamiltonian
+* **pHDAE** - port-Hamiltonian descriptor system

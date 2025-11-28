@@ -8,6 +8,9 @@ website:
       - href: index.qmd
         text: Home
       - basics.qmd
+      - notation.qmd
+      - LinearPHS.qmd
+      - references.qmd
 format:
   html:
     theme: cosmo

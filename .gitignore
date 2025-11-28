@@ -1,6 +1,7 @@
 
 *.local*
 
+
 # Quarto
 .quarto/
 _site/

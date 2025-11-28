@@ -21,7 +21,7 @@ $$
 $$
 
 ## Linear port-Hamiltonian descriptor systems
-In electrical engineering applications, the need for descriptor systems arise naturally. We will use a modified version of the following Definition given by Mehrmann & Morandin in [1]. This section only consideres linear descriptor systems.
+In electrical engineering applications, the need for descriptor systems arise naturally. We will use a modified version of the following Definition given by Mehrmann & Morandin in [1] in combination with the approach of Strehle in [2] and/or [3]. This section only consideres linear descriptor systems with a possibly non-linear resistive structure $r(\nabla H(x))$.
 
 ::: {.qp-theorem}
 **Definition: port-Hamiltonian descriptor system**
@@ -32,7 +32,7 @@ Consider a time interval $\mathbb{T}:=[0,T]\subset\mathbb{R}$, $T>0$, a state sp
             y &= G^T\nabla H(x),\\
             z &= K^T\nabla H(x),
         \end{align*}
-        with a Hamiltonian function $\mathcal{H}(x):\mathcal{X}\to\R$, where $x(t)\in\mathcal{X}$ is the state, $u(t)\in\R^{m_1}, y(t)\in\R^{m_1}$, are the controllable input and output, $d(t)\in\R^{m_2}, z(t)\in\R^{m_2}$ are the uncontrollable interaction ports. 
+        with a Hamiltonian function $\mathcal{H}(x):\mathcal{X}\to\R$, where $x(t)\in\mathcal{X}$ is the state, $u(t)\in\R^{m_1}, y(t)\in\R^{m_1}$, are the controllable input and output, $d(t)\in\R^{m_2}, z(t)\in\R^{m_2}$ are the uncontrollable interaction ports.
 :::
 
 Test

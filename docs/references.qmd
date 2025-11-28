@@ -9,3 +9,7 @@ engine: julia
 # References
 
 [1] Mehrmann, Volker, and Riccardo Morandin. "Structure-preserving discretization for port-Hamiltonian descriptor systems." 2019 IEEE 58th Conference on Decision and Control (CDC). IEEE, 2019.
+
+[2] Strehle, Felix. A Framework for Decentralized Stabilization in Networked Energy Systems: A Passivity-Based Approach. KIT Scientific Publishing, 2024.
+
+[3] Strehle, Felix, et al. "A unified passivity-based framework for control of modular islanded AC microgrids." IEEE Transactions on Control Systems Technology 30.5 (2021): 1960-1976.

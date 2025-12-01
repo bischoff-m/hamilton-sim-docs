@@ -6,6 +6,7 @@ engine: julia
 format:
     html:
         css: styles.css
+bibliography: references.bib
 ---
 
 $$
@@ -21,7 +22,7 @@ $$
 $$
 
 ## Linear port-Hamiltonian descriptor systems
-In electrical engineering applications, the need for descriptor systems arise naturally. We will use a modified version of the following Definition given by Mehrmann & Morandin in [1] in combination with the approach of Strehle in [2] and/or [3]. This section only consideres linear descriptor systems with a possibly non-linear resistive structure $r(\nabla H(x))$.
+In electrical engineering applications, the need for descriptor systems arise naturally. We will use a modified version of the following Definition given by Mehrmann & Morandin in @mehrmannStructurepreserving2019 in combination with the approach of Strehle in @strehleFramework2024 and/or @strehleUnified2022. This section only consideres linear descriptor systems with a possibly non-linear resistive structure $r(\nabla H(x))$.
 
 ::: {.qp-theorem}
 **Definition: port-Hamiltonian descriptor system**

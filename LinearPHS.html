@@ -22,7 +22,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -138,8 +158,9 @@ window.Quarto = {
 <span class="menu-text">Linear Port-Hamiltonian Systems</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./references.html"> 
-<span class="menu-text">References</span></a>
+    <span class="nav-link">
+<span class="menu-text">references.qmd</span>
+    </span>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -208,7 +229,7 @@ window.Quarto = {
 \]</span></p>
 <section id="linear-port-hamiltonian-descriptor-systems" class="level2">
 <h2 class="anchored" data-anchor-id="linear-port-hamiltonian-descriptor-systems">Linear port-Hamiltonian descriptor systems</h2>
-<p>In electrical engineering applications, the need for descriptor systems arise naturally. We will use a modified version of the following Definition given by Mehrmann &amp; Morandin in [1] in combination with the approach of Strehle in [2] and/or [3]. This section only consideres linear descriptor systems with a possibly non-linear resistive structure <span class="math inline">\(r(\nabla H(x))\)</span>.</p>
+<p>In electrical engineering applications, the need for descriptor systems arise naturally. We will use a modified version of the following Definition given by Mehrmann &amp; Morandin in <span class="citation" data-cites="mehrmannStructurepreserving2019">Mehrmann and Morandin (<a href="#ref-mehrmannStructurepreserving2019" role="doc-biblioref">2019</a>)</span> in combination with the approach of Strehle in <span class="citation" data-cites="strehleFramework2024">Strehle (<a href="#ref-strehleFramework2024" role="doc-biblioref">2024</a>)</span> and/or <span class="citation" data-cites="strehleUnified2022">Strehle et al. (<a href="#ref-strehleUnified2022" role="doc-biblioref">2022</a>)</span>. This section only consideres linear descriptor systems with a possibly non-linear resistive structure <span class="math inline">\(r(\nabla H(x))\)</span>.</p>
 <div class="qp-theorem">
 <p><strong>Definition: port-Hamiltonian descriptor system</strong></p>
 <p>Consider a time interval <span class="math inline">\(\mathbb{T}:=[0,T]\subset\mathbb{R}\)</span>, <span class="math inline">\(T&gt;0\)</span>, a state space <span class="math inline">\(\mathcal{X}\subseteq\R^n\)</span> and extended state space <span class="math inline">\(\mathcal{S}:=\T\times\mathcal{X}\)</span>. A port-Hamiltonian descriptor system (or pHDAE) is a system of differential (-algebraic) equations of the form <span class="math display">\[\begin{align*}
@@ -227,9 +248,20 @@ window.Quarto = {
 </div>
 
 
+
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-mehrmannStructurepreserving2019" class="csl-entry" role="listitem">
+Mehrmann, Volker, and Riccardo Morandin. 2019. <span>“Structure-Preserving Discretization for Port-<span>Hamiltonian</span> Descriptor Systems.”</span> In <em>2019 <span>IEEE</span> 58th <span>Conference</span> on <span>Decision</span> and <span>Control</span> (<span>CDC</span>)</em>, 6863–68. <a href="https://doi.org/10.1109/CDC40024.2019.9030180">https://doi.org/10.1109/CDC40024.2019.9030180</a>.
+</div>
+<div id="ref-strehleFramework2024" class="csl-entry" role="listitem">
+Strehle, Felix. 2024. <em>A <span>Framework</span> for <span>Decentralized Stabilization</span> in <span>Networked Energy Systems</span>: <span>A Passivity-Based Approach</span></em>. KIT Scientific Publishing. <a href="https://doi.org/10.5445/KSP/1000169890">https://doi.org/10.5445/KSP/1000169890</a>.
+</div>
+<div id="ref-strehleUnified2022" class="csl-entry" role="listitem">
+Strehle, Felix, Pulkit Nahata, Albertus Johannes Malan, Sören Hohmann, and Giancarlo Ferrari-Trecate. 2022. <span>“A <span>Unified Passivity-Based Framework</span> for <span>Control</span> of <span>Modular Islanded AC Microgrids</span>.”</span> <em>IEEE Transactions on Control Systems Technology</em> 30 (5): 1960–76. <a href="https://doi.org/10.1109/TCST.2021.3136489">https://doi.org/10.1109/TCST.2021.3136489</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "notation.html",
+    "href": "notation.html",
+    "title": "Notation & Abbreviations",
+    "section": "",
+    "text": "\\[\n\\newcommand{\\1}{1\\hspace{-0,9ex}1}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\E}{\\mathbb{E}}\n\\newcommand{\\Prob}{\\mathbb{P}}\n\\newcommand{\\cvar}{\\text{CVaR}}\n\\newcommand{\\var}{\\text{VaR}}\n\\newcommand{\\V}{\\mathbb{V}}\n\\newcommand{\\N}{\\mathbb{N}}\n\\newcommand{\\T}{\\mathbb{T}}\n\\]\n\nNotations\n\n\\(n\\in\\N\\) dimension of state-space \\(\\mathcal{X}\\subseteq\\R^n\\)\n\\(m_1\\in\\N\\) dimension of controllable input/output \\(u(t), y(t)\\)\n\\(m_2\\in\\N\\) dimension of uncontrollable interaction coupling port \\(d(t), z(t)\\)\n\\(m = m_1 + m_2\\) dimension of input/output \\(\\tilde{u}(t), \\tilde{y}(t)\\) into system\n\n\n\nAbbreviations\n\npH - port-Hamiltonian\npHDAE - port-Hamiltonian descriptor system"
+  },
+  {
     "objectID": "basics.html",
     "href": "basics.html",
     "title": "Basics",
@@ -47,5 +54,26 @@
     "title": "Home",
     "section": "Getting Started",
     "text": "Getting Started\n\nPrerequisites\nTo work with this repository, you’ll need:\n\nQuarto - Download and install from https://quarto.org/docs/get-started/\n\nChoose the installer for your operating system\nVerify installation: quarto --version\n\nJulia (Optional) - Required only if you want to execute Julia code blocks\n\nDownload from https://julialang.org/downloads/\nVerify installation: julia --version\n\n\n\n\nSetup\nClone this repository:\ngit clone git@github.com:bischoff-m/hamilton-sim-docs.git\ncd hamilton-sim-docs\nQuarto will automatically install any required Julia packages when rendering documents. Use the Julia REPL to add new packages as needed.\n\n\nPreview\nTo preview the documentation locally:\n# Start the preview server\nquarto preview docs\n\n# Or preview without watching for file changes\nquarto preview docs --no-watch-inputs\n\n# Or preview without opening a browser\nquarto preview docs --no-browser\nThe preview server will start and display the local URL.\n\n\nBuild\nTo build static HTML files:\ncd docs\nquarto render\nThe generated site will be in the docs/_site directory."
+  },
+  {
+    "objectID": "LinearPHS.html",
+    "href": "LinearPHS.html",
+    "title": "Linear Port-Hamiltonian Systems",
+    "section": "",
+    "text": "\\[\n\\newcommand{\\1}{1\\hspace{-0,9ex}1}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\E}{\\mathbb{E}}\n\\newcommand{\\Prob}{\\mathbb{P}}\n\\newcommand{\\cvar}{\\text{CVaR}}\n\\newcommand{\\var}{\\text{VaR}}\n\\newcommand{\\V}{\\mathbb{V}}\n\\newcommand{\\N}{\\mathbb{N}}\n\\newcommand{\\T}{\\mathbb{T}}\n\\]"
+  },
+  {
+    "objectID": "LinearPHS.html#linear-port-hamiltonian-descriptor-systems",
+    "href": "LinearPHS.html#linear-port-hamiltonian-descriptor-systems",
+    "title": "Linear Port-Hamiltonian Systems",
+    "section": "Linear port-Hamiltonian descriptor systems",
+    "text": "Linear port-Hamiltonian descriptor systems\nIn electrical engineering applications, the need for descriptor systems arise naturally. We will use a modified version of the following Definition given by Mehrmann & Morandin in [1] in combination with the approach of Strehle in [2] and/or [3]. This section only consideres linear descriptor systems with a possibly non-linear resistive structure \\(r(\\nabla H(x))\\).\n\nDefinition: port-Hamiltonian descriptor system\nConsider a time interval \\(\\mathbb{T}:=[0,T]\\subset\\mathbb{R}\\), \\(T&gt;0\\), a state space \\(\\mathcal{X}\\subseteq\\R^n\\) and extended state space \\(\\mathcal{S}:=\\T\\times\\mathcal{X}\\). A port-Hamiltonian descriptor system (or pHDAE) is a system of differential (-algebraic) equations of the form \\[\\begin{align*}\n            E\\dot{x} &= (J-R)\\nabla H(x) - r(\\nabla H(x)) + Gu + Kd,\\\\\n            y &= G^T\\nabla H(x),\\\\\n            z &= K^T\\nabla H(x),\n        \\end{align*}\\] with a Hamiltonian function \\(\\mathcal{H}(x):\\mathcal{X}\\to\\R\\), where \\(x(t)\\in\\mathcal{X}\\) is the state, \\(u(t)\\in\\R^{m_1}, y(t)\\in\\R^{m_1}\\), are the controllable input and output, \\(d(t)\\in\\R^{m_2}, z(t)\\in\\R^{m_2}\\) are the uncontrollable interaction ports.\n\nTest\n\nRemark\nWe can equivalently write \\[\\begin{align*}\n            E\\dot{x} + r &= (J-R)\\nabla H(x) + B\\tilde{u},\\\\\n            \\tilde{y} &= B^T\\nabla H(x),\n        \\end{align*}\\] with \\(\\tilde{u} = [u\\; d]^T\\in\\R^m\\), \\(m=m_1+m_2\\), \\(\\tilde{y} = [y\\; z]^T\\in\\R^m\\)"
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "References\n[1] Mehrmann, Volker, and Riccardo Morandin. “Structure-preserving discretization for port-Hamiltonian descriptor systems.” 2019 IEEE 58th Conference on Decision and Control (CDC). IEEE, 2019.\n[2] Strehle, Felix. A Framework for Decentralized Stabilization in Networked Energy Systems: A Passivity-Based Approach. KIT Scientific Publishing, 2024.\n[3] Strehle, Felix, et al. “A unified passivity-based framework for control of modular islanded AC microgrids.” IEEE Transactions on Control Systems Technology 30.5 (2021): 1960-1976."
   }
 ]

@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Marco Bischoff">
-<meta name="dcterms.date" content="2025-11-19">
+<meta name="author" content="Manuel Kleinschmager">
+<meta name="dcterms.date" content="2025-11-28">
 
-<title>Basics – Port-Hamiltonian Simulator</title>
+<title>References – Port-Hamiltonian Simulator</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,35 +71,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -125,7 +96,7 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./basics.html" aria-current="page"> 
+    <a class="nav-link" href="./basics.html"> 
 <span class="menu-text">Basics</span></a>
   </li>  
   <li class="nav-item">
@@ -137,7 +108,7 @@ window.Quarto = {
 <span class="menu-text">Linear Port-Hamiltonian Systems</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./references.html"> 
+    <a class="nav-link active" href="./references.html" aria-current="page"> 
 <span class="menu-text">References</span></a>
   </li>  
 </ul>
@@ -156,9 +127,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#port-hamiltonian-systems" id="toc-port-hamiltonian-systems" class="nav-link active" data-scroll-target="#port-hamiltonian-systems">Port-Hamiltonian Systems</a></li>
-  <li><a href="#passivity" id="toc-passivity" class="nav-link" data-scroll-target="#passivity">Passivity</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link active" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -167,7 +136,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Basics</h1>
+<h1 class="title">References</h1>
 </div>
 
 
@@ -177,14 +146,14 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Marco Bischoff </p>
+             <p>Manuel Kleinschmager </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 19, 2025</p>
+      <p class="date">November 28, 2025</p>
     </div>
   </div>
   
@@ -196,40 +165,11 @@ window.Quarto = {
 </header>
 
 
-<section id="port-hamiltonian-systems" class="level2">
-<h2 class="anchored" data-anchor-id="port-hamiltonian-systems">Port-Hamiltonian Systems</h2>
-<p>Linear form: <span class="math display">\[
-\dot{x} = Ax
-\]</span> where <span class="math inline">\(A\)</span> is the state space matrix(?) and <span class="math inline">\(x \in \mathbb{R}^{n}\)</span> always depends on time. In port-Hamiltonian systems: <span class="math display">\[
-\dot{x} = (J - R)Qx
-\]</span> where <span class="math inline">\(J \in \mathbb{R}^{n \times n}\)</span> is the interconnection matrix, <span class="math inline">\(R \in \mathbb{R}^{n \times n}\)</span> the dissipation matrix and <span class="math inline">\(Q \in \mathbb{R}^{n \times m}\)</span> the linear part of the state. The more general non-linear description is <span class="math display">\[
-\dot{x} = (J(x) - R(x)) \frac{dH(x)}{dx}
-\]</span> where <span class="math inline">\(\nabla H(x) = \frac{dH}{dx}(x)\)</span>. For now, we keep <span class="math inline">\(J\)</span> independent from <span class="math inline">\(x\)</span>. For specific systems it holds that <span class="math display">\[
-H(x) = \frac{1}{2} x^T Q x
-\]</span></p>
-<p>We are interested in description of dynamics, where we can influence the output. We then use the form <span class="math display">\[
-\dot{x} = Ax + Bu
-\]</span> where <span class="math inline">\(B\)</span> is the input matrix. In port-Hamiltonian systems this translates to <span class="math display">\[
-\dot{x} = (J - R)Qx + Bu
-\]</span> <span class="math display">\[
-y = B^T Qx
-\]</span> where <span class="math inline">\(u\)</span> is the input into and <span class="math inline">\(y\)</span> is the output of the system. For now we are only interested in the state <span class="math inline">\(x\)</span>, but not the output. Later the output of one system will be the input of another system.</p>
-</section>
-<section id="passivity" class="level2">
-<h2 class="anchored" data-anchor-id="passivity">Passivity</h2>
-<p>A passive system may consume and store energy, but is incapable of producing energy.</p>
-<p>Exact definition: Celledoni, E., &amp; Høiseth, E. H. (2017). <em>Energy-Preserving and Passivity-Consistent Numerical Discretization of Port-Hamiltonian Systems</em> (No.&nbsp;arXiv:1706.08621). arXiv. <a href="https://doi.org/10.48550/arXiv.1706.08621">https://doi.org/10.48550/arXiv.1706.08621</a></p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li>A Framework for Decentralized Stabilization in Networked Energy Systems: A Passivity-Based Approach
-<ul>
-<li>Page 82 for an example</li>
-<li>Definition 3.5 (page 40) for a linear pH system</li>
-<li>Definition A.2 (page 176) for dimensions</li>
-</ul></li>
-</ul>
+<section id="references" class="level1">
+<h1>References</h1>
+<p>[1] Mehrmann, Volker, and Riccardo Morandin. “Structure-preserving discretization for port-Hamiltonian descriptor systems.” 2019 IEEE 58th Conference on Decision and Control (CDC). IEEE, 2019.</p>
+<p>[2] Strehle, Felix. A Framework for Decentralized Stabilization in Networked Energy Systems: A Passivity-Based Approach. KIT Scientific Publishing, 2024.</p>
+<p>[3] Strehle, Felix, et al.&nbsp;“A unified passivity-based framework for control of modular islanded AC microgrids.” IEEE Transactions on Control Systems Technology 30.5 (2021): 1960-1976.</p>
 
 
 </section>

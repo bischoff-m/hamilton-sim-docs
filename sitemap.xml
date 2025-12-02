@@ -2,18 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://bischoff-m.github.io/hamilton-sim-docs/notation.html</loc>
-    <lastmod>2025-12-02T13:22:29.563Z</lastmod>
+    <lastmod>2025-12-02T15:07:26.515Z</lastmod>
   </url>
   <url>
-    <loc>https://bischoff-m.github.io/hamilton-sim-docs/LinearPHS.html</loc>
-    <lastmod>2025-12-02T13:22:29.563Z</lastmod>
+    <loc>https://bischoff-m.github.io/hamilton-sim-docs/ControlofPHS.html</loc>
+    <lastmod>2025-12-02T15:07:26.515Z</lastmod>
   </url>
   <url>
     <loc>https://bischoff-m.github.io/hamilton-sim-docs/index.html</loc>
-    <lastmod>2025-12-02T13:22:29.563Z</lastmod>
+    <lastmod>2025-12-02T15:07:26.515Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bischoff-m.github.io/hamilton-sim-docs/LinearPHS.html</loc>
+    <lastmod>2025-12-02T15:07:26.515Z</lastmod>
   </url>
   <url>
     <loc>https://bischoff-m.github.io/hamilton-sim-docs/basics.html</loc>
-    <lastmod>2025-12-02T13:22:29.563Z</lastmod>
+    <lastmod>2025-12-02T15:07:26.515Z</lastmod>
   </url>
 </urlset>

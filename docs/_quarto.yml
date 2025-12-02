@@ -10,6 +10,7 @@ website:
       - basics.qmd
       - notation.qmd
       - LinearPHS.qmd
+      - ControlofPHS.qmd
       - references.qmd
 format:
   html:

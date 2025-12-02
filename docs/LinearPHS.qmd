@@ -36,7 +36,7 @@ By definition, port-Hamiltonian systems are (cyclo-)passive as a consequence of 
 ::: {.qp-theorem}
 **Definition: Input-state-output port-Hamiltonian system**
 
-An input-state-output port-Hamiltonian system with $n$-dimensional state space manifold $\mathcal{X}$, input and output spaces $U=Y=\R^m$, and Hamiltonian $H:\mathcal{X}\to\R$, is given by
+An input-state-output port-Hamiltonian system (ISOPHS) with $n$-dimensional state space manifold $\mathcal{X}$, input and output spaces $U=Y=\R^m$, and Hamiltonian $H:\mathcal{X}\to\R$, is given by
 \begin{align*}
 \dot{x} &= [J(x) - R(x)]\nabla H(x) + g(x)u\\
 y &= g^T(x) \nabla H(x)

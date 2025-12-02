@@ -9,7 +9,7 @@
 <meta name="author" content="Manuel Kleinschmager">
 <meta name="dcterms.date" content="2025-11-28">
 
-<title>Linear Port-Hamiltonian Systems – Port-Hamiltonian Simulator</title>
+<title>Port-Hamiltonian Systems – Port-Hamiltonian Simulator</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -151,11 +151,11 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./notation.html"> 
-<span class="menu-text">Notation &amp; Abbreviations</span></a>
+<span class="menu-text">Preliminaries</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./LinearPHS.html" aria-current="page"> 
-<span class="menu-text">Linear Port-Hamiltonian Systems</span></a>
+<span class="menu-text">Port-Hamiltonian Systems</span></a>
   </li>  
   <li class="nav-item">
     <span class="nav-link">
@@ -178,7 +178,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#linear-port-hamiltonian-descriptor-systems" id="toc-linear-port-hamiltonian-descriptor-systems" class="nav-link active" data-scroll-target="#linear-port-hamiltonian-descriptor-systems">Linear port-Hamiltonian descriptor systems</a></li>
+  <li><a href="#general-port-hamiltonian-systems" id="toc-general-port-hamiltonian-systems" class="nav-link active" data-scroll-target="#general-port-hamiltonian-systems">General port-Hamiltonian systems</a></li>
+  <li><a href="#properties-of-port-hamiltonian-systems" id="toc-properties-of-port-hamiltonian-systems" class="nav-link" data-scroll-target="#properties-of-port-hamiltonian-systems">Properties of port-Hamiltonian systems</a></li>
+  <li><a href="#linear-port-hamiltonian-systems" id="toc-linear-port-hamiltonian-systems" class="nav-link" data-scroll-target="#linear-port-hamiltonian-systems">Linear port-Hamiltonian systems</a></li>
   </ul>
 </nav>
     </div>
@@ -187,7 +189,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Linear Port-Hamiltonian Systems</h1>
+<h1 class="title">Port-Hamiltonian Systems</h1>
 </div>
 
 
@@ -227,24 +229,86 @@ window.Quarto = {
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\T}{\mathbb{T}}
 \]</span></p>
-<section id="linear-port-hamiltonian-descriptor-systems" class="level2">
-<h2 class="anchored" data-anchor-id="linear-port-hamiltonian-descriptor-systems">Linear port-Hamiltonian descriptor systems</h2>
-<p>In electrical engineering applications, the need for descriptor systems arise naturally. We will use a modified version of the following Definition given by Mehrmann &amp; Morandin in <span class="citation" data-cites="mehrmannStructurepreserving2019">Mehrmann and Morandin (<a href="#ref-mehrmannStructurepreserving2019" role="doc-biblioref">2019</a>)</span> in combination with the approach of Strehle in <span class="citation" data-cites="strehleFramework2024">Strehle (<a href="#ref-strehleFramework2024" role="doc-biblioref">2024</a>)</span> and/or <span class="citation" data-cites="strehleUnified2022">Strehle et al. (<a href="#ref-strehleUnified2022" role="doc-biblioref">2022</a>)</span>. This section only consideres linear descriptor systems with a possibly non-linear resistive structure <span class="math inline">\(r(\nabla H(x))\)</span>.</p>
+<section id="general-port-hamiltonian-systems" class="level2">
+<h2 class="anchored" data-anchor-id="general-port-hamiltonian-systems">General port-Hamiltonian systems</h2>
+<p>The Hamiltonian (or total energy of the system) of a general port-Hamiltonian system is a continuously differentiable function <span class="math inline">\(H:\mathcal{X}\to\R\)</span>, for some domain <span class="math inline">\(\mathcal{X}\subseteq \R^n\)</span>. The Hamiltonian flow of energy is described by the gradient of the Hamiltonian <span class="math inline">\(H\)</span>, i.e. <span class="math display">\[\begin{align*}
+\frac{\partial H}{\partial x}(x) = \nabla H(x) = \left[\begin{matrix}
+\frac{\partial H}{\partial x_1}\\
+\vdots\\
+\frac{\partial H}{\partial x_n}
+\end{matrix}\right].
+\end{align*}\]</span></p>
+<p>By definition, port-Hamiltonian systems are (cyclo-)passive as a consequence of their system formulation. First, we define an input-state-output port-Hamiltonian system following Definition 6.1.1 in <span class="citation" data-cites="AvdS2000l2Gain">Van der Schaft (<a href="#ref-AvdS2000l2Gain" role="doc-biblioref">2000</a>)</span>.</p>
 <div class="qp-theorem">
-<p><strong>Definition: port-Hamiltonian descriptor system</strong></p>
-<p>Consider a time interval <span class="math inline">\(\mathbb{T}:=[0,T]\subset\mathbb{R}\)</span>, <span class="math inline">\(T&gt;0\)</span>, a state space <span class="math inline">\(\mathcal{X}\subseteq\R^n\)</span> and extended state space <span class="math inline">\(\mathcal{S}:=\T\times\mathcal{X}\)</span>. A port-Hamiltonian descriptor system (or pHDAE) is a system of differential (-algebraic) equations of the form <span class="math display">\[\begin{align*}
-            E\dot{x} &amp;= (J-R)z(t, x) - r(\nabla H(x)) + Gu + Kd,\\
+<p><strong>Definition: Input-state-output port-Hamiltonian system</strong></p>
+<p>An input-state-output port-Hamiltonian system with <span class="math inline">\(n\)</span>-dimensional state space manifold <span class="math inline">\(\mathcal{X}\)</span>, input and output spaces <span class="math inline">\(U=Y=\R^m\)</span>, and Hamiltonian <span class="math inline">\(H:\mathcal{X}\to\R\)</span>, is given by <span class="math display">\[\begin{align*}
+\dot{x} &amp;= [J(x) - R(x)]\nabla H(x) + g(x)u\\
+y &amp;= g^T(x) \nabla H(x)
+\end{align*}\]</span> where the <span class="math inline">\(n\times n\)</span>-matrices <span class="math inline">\(J(x), R(x)\)</span> satisfy <span class="math inline">\(J(x) = -J^T(x)\)</span> and <span class="math inline">\(R(x) = R^T(x)\geq 0\)</span>.</p>
+</div>
+<p>By the properties of <span class="math inline">\(J(x)\)</span> and <span class="math inline">\(R(x)\)</span>, it immediately follows that</p>
+<p><span class="math display">\[\begin{align*}
+\frac{d H}{dt}(x(t)) &amp;= \frac{\partial^T H}{\partial x}(x(t))\dot{x}(t) = -\frac{\partial^T H}{\partial x}(x(t))R(x(t))\frac{\partial H}{\partial x}(x(t)) + y^T(t)u(t) \leq u^T(t)y(t),
+\end{align*}\]</span></p>
+<p>implying cyclo-passivity and passivity if <span class="math inline">\(H\geq 0\)</span>. An input-state-output pHS with non-linear resistive structure is given as</p>
+<p><span class="math display">\[\begin{align*}
+\dot{x} &amp;= J(x)z - R(x, z) + g(x)u,\quad z = \nabla H(x),\\
+y &amp;= g^T(x) z
+\end{align*}\]</span></p>
+<p>where <span class="math inline">\(J(x) = -J^T(x)\)</span>, and the resistive mapping <span class="math inline">\(R(x,\cdot):\R^n\to\R^n\)</span> satisfies</p>
+<p><span class="math display">\[
+z^TR(x,z)\geq 0,\quad\text{for all}\; z\in\R^n,\;x\in\mathcal{X}.
+\]</span></p>
+<div class="qp-theorem">
+<p><strong>Definition: pHS with feedthrough</strong></p>
+<p>An input-state-output port-Hamiltonian system with feedthrough terms is specified by an <span class="math inline">\(n\)</span>-dimensional state space manifold <span class="math inline">\(\mathcal{X}\)</span>, input and output spaces <span class="math inline">\(U=Y=\R^m\)</span>, Hamiltonian <span class="math inline">\(H:\mathcal{X}\to\R\)</span>, and dynamics <span class="math display">\[\begin{align*}
+\dot{x} &amp;= [J(x) - R(x)]\nabla H(x) + [G(x) - P(x)]u,\\
+y &amp;= [G(x) - P(x)]^T\nabla H(x) + [M(x) + S(x)]u,
+\end{align*}\]</span> where the matrices <span class="math inline">\(J(x), M(x), R(x), P(x), S(x)\)</span> satisfy the skew-symmetry conditions <span class="math inline">\(J(x) = -J^T(x)\)</span>, <span class="math inline">\(M(x) = -M^T(x)\)</span>, and the nonnegativity condition</p>
+<p><span class="math display">\[\begin{align*}
+\left[\begin{matrix}
+R(x) &amp; P(x) \\
+P^T(x) &amp; S(x)
+\end{matrix}\right]\geq 0,\quad x\in\mathcal{X}.
+\end{align*}\]</span></p>
+</div>
+</section>
+<section id="properties-of-port-hamiltonian-systems" class="level2">
+<h2 class="anchored" data-anchor-id="properties-of-port-hamiltonian-systems">Properties of port-Hamiltonian systems</h2>
+<div class="qp-theorem">
+<p><strong>Definition: Casimir functions</strong></p>
+<p>A Casimir function for an input-state-output port-Hamiltonian system is any function <span class="math inline">\(C:\mathcal{X}\to\R\)</span> satisfying</p>
+<p><span class="math display">\[
+\frac{\partial^TC}{\partial x}(x)[J(x) - R(x)] = 0,\quad x\in\mathcal{X}.
+\]</span></p>
+</div>
+<p>A Casimir is a conserved quantity of the system for <span class="math inline">\(u=0\)</span>, independently of the Hamiltonian <span class="math inline">\(H\)</span>. In many cases of interest, the desired setpoint of a pHS is not equal to the minimum of the Hamiltonian function <span class="math inline">\(H\)</span>, but instead is a steady-state value corresponding to a nonzero constant input. This motivates the following Proposition by <span class="citation" data-cites="AvdS2000l2Gain">Van der Schaft (<a href="#ref-AvdS2000l2Gain" role="doc-biblioref">2000</a>)</span> and terminology of <span style="color: red;">shifted passivity</span>.</p>
+<div class="qp-theorem">
+<p><strong>Shifted passivity</strong></p>
+<p>Consider an input-state-output pHS with feedthrough terms, together with a constant input <span class="math inline">\(\bar{u}\)</span> with corresponding steady-state <span class="math inline">\(\bar{x}\)</span> determined by <span class="math display">\[
+0 = [J(\bar{x}) - R(\bar{x})]\nabla H(\bar{x}) + [G(\bar{x}) - P(\bar{x})]\bar{u}.
+\]</span> Denote <span class="math display">\[
+\bar{y} = [G(\bar{x})+P(\bar{x})]^T\nabla H(\bar{x}) + [M(\bar{x}) + S(\bar{x})]\bar{u}.
+\]</span> Suppose we can find coordinates <span class="math inline">\(x\)</span> in which the system matrices <span class="math inline">\(J(x), M(x), R(x), P(x), S(x), G(x)\)</span> are all constant. Then the system can be rewritten as <span class="math display">\[\begin{align*}
+\dot{x} &amp;= [J-R]\nabla \hat{H}_{\bar{x}}(x) + [G - P](u-\bar{u})\\
+y - \bar{y} &amp;= [G + P]^T\nabla\hat{H}_{\bar{x}}(x) + [M+S](u-\bar{u})
+\end{align*}\]</span> with respect to the shifted Hamiltonian defined as <span class="math display">\[
+\hat{H}_{\bar{x}}(x) := H(x) - \nabla^T H(\bar{x})(x-\bar{x}) - H(\bar{x}).
+\]</span> If <span class="math inline">\(H\)</span> is convex in the coordinates <span class="math inline">\(x\)</span>, then <span class="math inline">\(\hat{H}_{\bar{x}}\)</span> has a minimum at <span class="math inline">\(x=\bar{x}\)</span> (with value <span class="math inline">\(0\)</span>), and the pHS is passive with respect to the shifted supply rate <span class="math inline">\(s(u,y) = (u- \bar{u})^T(y - \bar{y})\)</span>, with storage function <span class="math inline">\(\hat{H}_{\bar{x}}\)</span>.</p>
+</div>
+</section>
+<section id="linear-port-hamiltonian-systems" class="level2">
+<h2 class="anchored" data-anchor-id="linear-port-hamiltonian-systems">Linear port-Hamiltonian systems</h2>
+<p>Linear port-Hamiltonian systems arise when the underlying Hamiltonian (or total energy of the system) is a quadratic function in the state, i.e. <span class="math display">\[\begin{align*}
+H(x) = \frac{1}{2}x^TQx.
+\end{align*}\]</span> for some state <span class="math inline">\(x\in\R^n\)</span> with entries <span class="math inline">\(x_i\)</span>, <span class="math inline">\(i=1,\ldots, n\)</span> and square matrix <span class="math inline">\(Q\in\R^{n\times n}\)</span>.</p>
+<div class="qp-theorem">
+<p><strong>Definition: port-Hamiltonian system</strong></p>
+<p>Consider a time interval <span class="math inline">\(\mathbb{T}:=[0,T]\subset\mathbb{R}\)</span>, <span class="math inline">\(T&gt;0\)</span>, a state space <span class="math inline">\(\mathcal{X}\subseteq\R^n\)</span> and extended state space <span class="math inline">\(\mathcal{S}:=\T\times\mathcal{X}\)</span>. A port-Hamiltonian system (or pHS) is a system of ordinary differential equations of the form <span class="math display">\[\begin{align*}
+            \dot{x} &amp;= (J-R)\nabla H(x) + Gu + Kd,\\
             y &amp;= G^T\nabla H(x),\\
             z &amp;= K^T\nabla H(x),
-        \end{align*}\]</span> with a Hamiltonian function <span class="math inline">\(\mathcal{H}(x):\mathcal{X}\to\R\)</span>, where <span class="math inline">\(x(t)\in\mathcal{X}\)</span> is the state, <span class="math inline">\(u(t)\in\R^{m_1}, y(t)\in\R^{m_1}\)</span>, are the controllable input and output, <span class="math inline">\(d(t)\in\R^{m_2}, z(t)\in\R^{m_2}\)</span> are the uncontrollable interaction ports. Furthermore, <span class="math inline">\(E\in\R^{\ell\times n}\)</span></p>
-</div>
-<p>Test</p>
-<div class="qp-theorem">
-<p><strong>Remark</strong></p>
-<p>We can equivalently write <span class="math display">\[\begin{align*}
-            E\dot{x} + r &amp;= (J-R)\nabla H(x) + B\tilde{u},\\
-            \tilde{y} &amp;= B^T\nabla H(x),
-        \end{align*}\]</span> with <span class="math inline">\(\tilde{u} = [u\; d]^T\in\R^m\)</span>, <span class="math inline">\(m=m_1+m_2\)</span>, <span class="math inline">\(\tilde{y} = [y\; z]^T\in\R^m\)</span></p>
+        \end{align*}\]</span> with a Hamiltonian function <span class="math inline">\(\mathcal{H}(x):\mathcal{X}\to\R\)</span>, where <span class="math inline">\(x(t)\in\mathcal{X}\)</span> is the state, <span class="math inline">\(u(t)\in\R^{m_1}, y(t)\in\R^{m_1}\)</span>, are the controllable input and output, <span class="math inline">\(d(t)\in\R^{m_2}, z(t)\in\R^{m_2}\)</span> are the uncontrollable interaction ports. Furthermore, <span class="math inline">\(E\in\R^{\ell\times n}\)</span> TODO</p>
 </div>
 
 
@@ -252,14 +316,8 @@ window.Quarto = {
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-mehrmannStructurepreserving2019" class="csl-entry" role="listitem">
-Mehrmann, Volker, and Riccardo Morandin. 2019. <span>“Structure-Preserving Discretization for Port-<span>Hamiltonian</span> Descriptor Systems.”</span> In <em>2019 <span>IEEE</span> 58th <span>Conference</span> on <span>Decision</span> and <span>Control</span> (<span>CDC</span>)</em>, 6863–68. <a href="https://doi.org/10.1109/CDC40024.2019.9030180">https://doi.org/10.1109/CDC40024.2019.9030180</a>.
-</div>
-<div id="ref-strehleFramework2024" class="csl-entry" role="listitem">
-Strehle, Felix. 2024. <em>A <span>Framework</span> for <span>Decentralized Stabilization</span> in <span>Networked Energy Systems</span>: <span>A Passivity-Based Approach</span></em>. KIT Scientific Publishing. <a href="https://doi.org/10.5445/KSP/1000169890">https://doi.org/10.5445/KSP/1000169890</a>.
-</div>
-<div id="ref-strehleUnified2022" class="csl-entry" role="listitem">
-Strehle, Felix, Pulkit Nahata, Albertus Johannes Malan, Sören Hohmann, and Giancarlo Ferrari-Trecate. 2022. <span>“A <span>Unified Passivity-Based Framework</span> for <span>Control</span> of <span>Modular Islanded AC Microgrids</span>.”</span> <em>IEEE Transactions on Control Systems Technology</em> 30 (5): 1960–76. <a href="https://doi.org/10.1109/TCST.2021.3136489">https://doi.org/10.1109/TCST.2021.3136489</a>.
+<div id="ref-AvdS2000l2Gain" class="csl-entry" role="listitem">
+Van der Schaft, Arjan. 2000. <em>L2-Gain and Passivity Techniques in Nonlinear Control</em>. Springer.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

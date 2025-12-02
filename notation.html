@@ -9,7 +9,7 @@
 <meta name="author" content="Manuel Kleinschmager">
 <meta name="dcterms.date" content="2025-11-28">
 
-<title>Notation &amp; Abbreviations – Port-Hamiltonian Simulator</title>
+<title>Preliminaries – Port-Hamiltonian Simulator</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -101,6 +101,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -130,11 +131,11 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./notation.html" aria-current="page"> 
-<span class="menu-text">Notation &amp; Abbreviations</span></a>
+<span class="menu-text">Preliminaries</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./LinearPHS.html"> 
-<span class="menu-text">Linear Port-Hamiltonian Systems</span></a>
+<span class="menu-text">Port-Hamiltonian Systems</span></a>
   </li>  
   <li class="nav-item">
     <span class="nav-link">
@@ -157,8 +158,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#notations" id="toc-notations" class="nav-link active" data-scroll-target="#notations">Notations</a></li>
-  <li><a href="#abbreviations" id="toc-abbreviations" class="nav-link" data-scroll-target="#abbreviations">Abbreviations</a></li>
+  <li><a href="#definitions-notations" id="toc-definitions-notations" class="nav-link active" data-scroll-target="#definitions-notations">Definitions &amp; Notations</a></li>
   </ul>
 </nav>
     </div>
@@ -167,7 +167,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Notation &amp; Abbreviations</h1>
+<h1 class="title">Preliminaries</h1>
 </div>
 
 
@@ -207,21 +207,40 @@ window.Quarto = {
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\T}{\mathbb{T}}
 \]</span></p>
-<section id="notations" class="level1">
-<h1>Notations</h1>
-<ul>
-<li><span class="math inline">\(n\in\N\)</span> dimension of state-space <span class="math inline">\(\mathcal{X}\subseteq\R^n\)</span></li>
-<li><span class="math inline">\(m_1\in\N\)</span> dimension of controllable input/output <span class="math inline">\(u(t), y(t)\)</span></li>
-<li><span class="math inline">\(m_2\in\N\)</span> dimension of uncontrollable interaction coupling port <span class="math inline">\(d(t), z(t)\)</span></li>
-<li><span class="math inline">\(m = m_1 + m_2\)</span> dimension of input/output <span class="math inline">\(\tilde{u}(t), \tilde{y}(t)\)</span> into system</li>
-</ul>
-</section>
-<section id="abbreviations" class="level1">
-<h1>Abbreviations</h1>
-<ul>
-<li><strong>pH</strong> - port-Hamiltonian</li>
-<li><strong>pHDAE</strong> - port-Hamiltonian descriptor system</li>
-</ul>
+<section id="definitions-notations" class="level1">
+<h1>Definitions &amp; Notations</h1>
+<p>For the notations and definitions used in the main chapters of this documentation, we consider <span style="color: red;">state-space systems</span> <span class="math inline">\(\Sigma\)</span> with inputs and outputs of the general form</p>
+<p><span class="math display">\[\begin{align*}
+\dot{x} &amp;= f(x,u),\quad u\in U\\
+y &amp;= h(x, u),\quad y\in Y
+\end{align*}\]</span></p>
+<p>where <span class="math inline">\(x=(x_1,\ldots,x_n)\)</span> are local coordinates for an <span class="math inline">\(n\)</span>-dimensional state space manifold <span class="math inline">\(\mathcal{X}\subseteq\R^n\)</span>, and <span class="math inline">\(U\)</span> and <span class="math inline">\(Y\)</span> are linear spaces, of dimension <span class="math inline">\(m\)</span>, respectively <span class="math inline">\(p\)</span>. We assume that there exists a unique solution trajectory <span class="math inline">\(x(\cdot)\)</span> on <span class="math inline">\([0,\infty)\)</span> of the differential equation for all initial conditions <span class="math inline">\(x(0)\)</span>. On the combined space <span class="math inline">\(U\times Y\)</span> of inputs and outputs consider a function</p>
+<p><span class="math display">\[\begin{align*}
+s:U\times Y\to\R,
+\end{align*}\]</span></p>
+<p>called <span style="color: red;">supply rate</span>.</p>
+<div class="qp-theorem">
+<p><strong>(Cyclo-)Dissipativity, conservative</strong></p>
+<p>A state-space system <span class="math inline">\(\Sigma\)</span> is said to be <span style="color: red;">dissipative</span> with respect to the supply rate <span class="math inline">\(s\)</span> if there exists a function <span class="math inline">\(S:\mathcal{X}\to [0,\infty)\)</span>, called <span style="color: red;">storage function</span>, such that for all initial conditions <span class="math inline">\(x(t_0) = x_0\in\mathcal{X}\)</span> at any time <span class="math inline">\(t_0\)</span>, and for all allowed input functions <span class="math inline">\(u(\cdot)\)</span> and all <span class="math inline">\(t_1\geq t_0\)</span> the following inequality holds <span class="math display">\[\begin{align}\label{eq:DissIneq}
+S(x(t_1))\leq S(x(t_0)) + \int_{t_0}^{t_1}s(u(t), y(t))dt.
+\end{align}\]</span> If this inequality holds with equality for all <span class="math inline">\(x_0\)</span>, <span class="math inline">\(t_1\geq t_0\)</span>, and all <span class="math inline">\(u(\cdot)\)</span>, then <span class="math inline">\(\Sigma\)</span> is <span style="color: red;">conservative</span> with respect to <span class="math inline">\(s\)</span>. Finally, <span class="math inline">\(\Sigma\)</span> is called <span style="color: red;">cyclo-dissipative</span> with respect to <span class="math inline">\(s\)</span> if there exists a function <span class="math inline">\(S:\mathcal{X}\to\R\)</span> (not necessarily nonnegative) such that the inequality above holds.</p>
+</div>
+<p>The inequality above is called the <span style="color: red;">dissipation inequality</span>. It expresses the fact that the stored energy <span class="math inline">\(S(x(t_1))\)</span> of <span class="math inline">\(\Sigma\)</span> at any future time <span class="math inline">\(t_1\)</span> is at most equal to the stored energy <span class="math inline">\(S(x(t_0))\)</span> at present time <span class="math inline">\(t_0\)</span>, plus the total externally supplied energy</p>
+<p><span class="math display">\[
+\int_{t_0}^{t_1}s(u(t), y(t))dt
+\]</span></p>
+<p>during the time interval <span class="math inline">\([t_0,t_1]\)</span>.</p>
+<div class="qp-theorem">
+<p><strong>Passivity</strong></p>
+<p>A state space system <span class="math inline">\(\Sigma\)</span> with <span class="math inline">\(U=Y=\R^m\)</span> is <span style="color: red;">passive</span> if it is dissipative with respect to the supply rate <span class="math inline">\(s(u,y) = u^Ty\)</span>. <span class="math inline">\(\Sigma\)</span> is <span style="color: red;">input strictly passive</span> if there exists <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(\Sigma\)</span> is dissipative with respect to <span class="math inline">\(s(u,y) = u^Ty - \delta\|u\|^2\)</span>. <span class="math inline">\(\Sigma\)</span> is <span style="color: red;">ouput strictly passive</span> if there exists <span class="math inline">\(\varepsilon&gt;0\)</span> such that <span class="math inline">\(\Sigma\)</span> is dissipative with respect to <span class="math inline">\(s(u,y) = u^Ty - \varepsilon\|y\|^2\)</span>. Finally, <span class="math inline">\(\Sigma\)</span> is <span style="color: red;">lossless</span> if it is conservative with respect to <span class="math inline">\(s(u,y) = u^Ty\)</span>.</p>
+</div>
+<div class="qp-theorem">
+<p><strong><span class="math inline">\(L_2\)</span>-Gain</strong></p>
+<p>A state space system <span class="math inline">\(\Sigma\)</span> with <span class="math inline">\(U=\R^m\)</span>, <span class="math inline">\(Y=\R^p\)</span> has <span style="color: red;"><span class="math inline">\(L_2\)</span>-gain <span class="math inline">\(\leq\gamma\)</span></span> if it is dissipative with respect to the supply rate <span class="math inline">\(s(u,y) = \frac{\gamma^2}{2}\|u\|^2 - \frac{1}{2}\|y\|^2\)</span>. The <span class="math inline">\(L_2\)</span>-gain of <span class="math inline">\(\Sigma\)</span> is defined as <span class="math display">\[
+\gamma(\Sigma) := \inf\{\gamma\;|\; \Sigma\;\text{has}\;L_2-\text{gain}\;\leq \gamma\}.
+\]</span></p>
+<p><span class="math inline">\(\Sigma\)</span> is said to have <span class="math inline">\(L_2\)</span>-gain <span class="math inline">\(&lt;\gamma\)</span> if there exists <span class="math inline">\(\tilde{\gamma}&lt;\gamma\)</span> such that <span class="math inline">\(\Sigma\)</span> has <span class="math inline">\(L_2\)</span>-gain <span class="math inline">\(\leq\tilde{\gamma}\)</span>. Finally <span class="math inline">\(\Sigma\)</span> is called <span style="color: red;">inner</span> if it is conservative with respect to <span class="math inline">\(s(u,y)= \frac{1}{2}\|u\|^2 - \frac{1}{2}\|y\|^2\)</span>.</p>
+</div>
 
 
 </section>

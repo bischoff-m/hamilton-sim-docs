@@ -28,11 +28,11 @@ In electrical engineering applications, the need for descriptor systems arise na
 
 Consider a time interval $\mathbb{T}:=[0,T]\subset\mathbb{R}$, $T>0$, a state space $\mathcal{X}\subseteq\R^n$ and extended state space $\mathcal{S}:=\T\times\mathcal{X}$. A port-Hamiltonian descriptor system (or pHDAE) is a system of differential (-algebraic) equations of the form
         \begin{align*}
-            E\dot{x} &= (J-R)\nabla H(x) - r(\nabla H(x)) + Gu + Kd,\\
+            E\dot{x} &= (J-R)z(t, x) - r(\nabla H(x)) + Gu + Kd,\\
             y &= G^T\nabla H(x),\\
             z &= K^T\nabla H(x),
         \end{align*}
-        with a Hamiltonian function $\mathcal{H}(x):\mathcal{X}\to\R$, where $x(t)\in\mathcal{X}$ is the state, $u(t)\in\R^{m_1}, y(t)\in\R^{m_1}$, are the controllable input and output, $d(t)\in\R^{m_2}, z(t)\in\R^{m_2}$ are the uncontrollable interaction ports.
+        with a Hamiltonian function $\mathcal{H}(x):\mathcal{X}\to\R$, where $x(t)\in\mathcal{X}$ is the state, $u(t)\in\R^{m_1}, y(t)\in\R^{m_1}$, are the controllable input and output, $d(t)\in\R^{m_2}, z(t)\in\R^{m_2}$ are the uncontrollable interaction ports. Furthermore, $E\in\R^{\ell\times n}$
 :::
 
 Test

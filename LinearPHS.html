@@ -233,10 +233,10 @@ window.Quarto = {
 <div class="qp-theorem">
 <p><strong>Definition: port-Hamiltonian descriptor system</strong></p>
 <p>Consider a time interval <span class="math inline">\(\mathbb{T}:=[0,T]\subset\mathbb{R}\)</span>, <span class="math inline">\(T&gt;0\)</span>, a state space <span class="math inline">\(\mathcal{X}\subseteq\R^n\)</span> and extended state space <span class="math inline">\(\mathcal{S}:=\T\times\mathcal{X}\)</span>. A port-Hamiltonian descriptor system (or pHDAE) is a system of differential (-algebraic) equations of the form <span class="math display">\[\begin{align*}
-            E\dot{x} &amp;= (J-R)\nabla H(x) - r(\nabla H(x)) + Gu + Kd,\\
+            E\dot{x} &amp;= (J-R)z(t, x) - r(\nabla H(x)) + Gu + Kd,\\
             y &amp;= G^T\nabla H(x),\\
             z &amp;= K^T\nabla H(x),
-        \end{align*}\]</span> with a Hamiltonian function <span class="math inline">\(\mathcal{H}(x):\mathcal{X}\to\R\)</span>, where <span class="math inline">\(x(t)\in\mathcal{X}\)</span> is the state, <span class="math inline">\(u(t)\in\R^{m_1}, y(t)\in\R^{m_1}\)</span>, are the controllable input and output, <span class="math inline">\(d(t)\in\R^{m_2}, z(t)\in\R^{m_2}\)</span> are the uncontrollable interaction ports.</p>
+        \end{align*}\]</span> with a Hamiltonian function <span class="math inline">\(\mathcal{H}(x):\mathcal{X}\to\R\)</span>, where <span class="math inline">\(x(t)\in\mathcal{X}\)</span> is the state, <span class="math inline">\(u(t)\in\R^{m_1}, y(t)\in\R^{m_1}\)</span>, are the controllable input and output, <span class="math inline">\(d(t)\in\R^{m_2}, z(t)\in\R^{m_2}\)</span> are the uncontrollable interaction ports. Furthermore, <span class="math inline">\(E\in\R^{\ell\times n}\)</span></p>
 </div>
 <p>Test</p>
 <div class="qp-theorem">

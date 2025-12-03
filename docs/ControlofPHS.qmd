@@ -157,6 +157,34 @@ k_I\xi\\
 \end{matrix}\right]
 \end{align*}
 
+### Passivity-based Control
+
+There exists a lot of theory on passivity-based controls, see @AvdS2000l2Gain Chapter 7.2. We will only consider a small but very important section from this chapter. When also allowing for shaping of the interconnection and damping matrices $J(x), R(x)$ in a pHS, the literature usually calls such energy-shaping controls the *Interconnection and damping assignment passivity-based control* (short: IDA-PBC). This type of control is employed in many engineering applications and its design objective is to obtain by state-feedback $u=\alpha(x)$ a closed-loop system of the shaped port-Hamiltonian form
+
+$$
+\dot{x} = [J_d(x) - R_d(x)]\frac{\partial H_d}{\partial x}(x),
+$$
+
+where $J_d(x) = -J_d^T(x)$, and $R_d(x) = R_d^T(x)\geq 0$ are *desired* interconnection and resistive structure matrices, and $H_d$ is a desired (shaped) Hamiltonian having a minimum at $x^\ast$. Transforming the (classical) pHS into the one stated above by application of state feedback $u=\alpha(x)$ amounts to the equation
+
+$$
+[J(x) - R(x)]\frac{\partial H}{\partial x}(x) + g(x)\alpha(x) = [J_d(x) - R_d(x)]\frac{\partial H_d}{\partial x}(x).
+$$
+
+The dependence on $\alpha(x)$ can be eliminated. Assume that $g(x)$ has maximal column rank for all $x\in\mathcal{X}$. Denoting by $g^\perp(x)$ a maximal rank annihilator of $g(x)$, premultiplication of both sides of the equation above by $g^\perp(x)$ results in
+
+$$
+g^\perp(x)[J(x) - R(x)] \frac{\partial H}{\partial x}(x) = g^\perp(x)[J_d(x) - R_d(x)]\frac{\partial H_d}{\partial x}(x).
+$$
+
+This is called the [IDA-PBC matching equation]{.tcr}. IDA-PBC is concerned with finding $J_d,R_d$ and $H_d$ satisfying the equation above such that $H_d$ has its minimum at the desired equilibrium $x^\ast$. Once the matching equation has been solved, the required state feedback $u=\alpha(x)$ follows, and is uniquely given as
+
+$$
+\alpha(x) = \left(g^T(x)g(x)\right)^{-1}g^T(x)\times\left(\left[J_d(x) - R_d(x)\right]\frac{\partial H_d}{\partial x}(x) - \left[J(x) - R(x)\right]\frac{\partial H}{\partial x}(x)\right).
+$$
+
+@AvdS2000l2Gain mentions the main problem with IDA-PBC: Solving the IDA-PBC matching equation can be a tedious process; basically because there are many degrees of freedom $J_d$, $R_d$ in order to construct $H_d$ having its minimum at $x^\ast$.
+
 ### Control by Energy-routing
 
 Consider the problem of energy-transfer. Consider two pHS $\Sigma_i$ (without internal dissipation) in input-state-output form

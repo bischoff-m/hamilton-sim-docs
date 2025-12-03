@@ -11,7 +11,6 @@ website:
       - notation.qmd
       - LinearPHS.qmd
       - ControlofPHS.qmd
-      - references.qmd
 format:
   html:
     theme: cosmo

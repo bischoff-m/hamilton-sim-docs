@@ -182,6 +182,7 @@ window.Quarto = {
   <li><a href="#energy-casimir-method" id="toc-energy-casimir-method" class="nav-link" data-scroll-target="#energy-casimir-method">Energy-Casimir method</a></li>
   <li><a href="#dynamic-controller-systems" id="toc-dynamic-controller-systems" class="nav-link" data-scroll-target="#dynamic-controller-systems">Dynamic controller systems</a></li>
   <li><a href="#example-pid-controllers" id="toc-example-pid-controllers" class="nav-link" data-scroll-target="#example-pid-controllers">Example: PID controllers</a></li>
+  <li><a href="#passivity-based-control" id="toc-passivity-based-control" class="nav-link" data-scroll-target="#passivity-based-control">Passivity-based Control</a></li>
   <li><a href="#control-by-energy-routing" id="toc-control-by-energy-routing" class="nav-link" data-scroll-target="#control-by-energy-routing">Control by Energy-routing</a></li>
   </ul></li>
   </ul>
@@ -349,6 +350,26 @@ k_I\xi\\
 \frac{\eta}{k_D}
 \end{matrix}\right]
 \end{align*}\]</span></p>
+</section>
+<section id="passivity-based-control" class="level3">
+<h3 class="anchored" data-anchor-id="passivity-based-control">Passivity-based Control</h3>
+<p>There exists a lot of theory on passivity-based controls, see <span class="citation" data-cites="AvdS2000l2Gain">Van der Schaft (<a href="#ref-AvdS2000l2Gain" role="doc-biblioref">2000</a>)</span> Chapter 7.2. We will only consider a small but very important section from this chapter. When also allowing for shaping of the interconnection and damping matrices <span class="math inline">\(J(x), R(x)\)</span> in a pHS, the literature usually calls such energy-shaping controls the <em>Interconnection and damping assignment passivity-based control</em> (short: IDA-PBC). This type of control is employed in many engineering applications and its design objective is to obtain by state-feedback <span class="math inline">\(u=\alpha(x)\)</span> a closed-loop system of the shaped port-Hamiltonian form</p>
+<p><span class="math display">\[
+\dot{x} = [J_d(x) - R_d(x)]\frac{\partial H_d}{\partial x}(x),
+\]</span></p>
+<p>where <span class="math inline">\(J_d(x) = -J_d^T(x)\)</span>, and <span class="math inline">\(R_d(x) = R_d^T(x)\geq 0\)</span> are <em>desired</em> interconnection and resistive structure matrices, and <span class="math inline">\(H_d\)</span> is a desired (shaped) Hamiltonian having a minimum at <span class="math inline">\(x^\ast\)</span>. Transforming the (classical) pHS into the one stated above by application of state feedback <span class="math inline">\(u=\alpha(x)\)</span> amounts to the equation</p>
+<p><span class="math display">\[
+[J(x) - R(x)]\frac{\partial H}{\partial x}(x) + g(x)\alpha(x) = [J_d(x) - R_d(x)]\frac{\partial H_d}{\partial x}(x).
+\]</span></p>
+<p>The dependence on <span class="math inline">\(\alpha(x)\)</span> can be eliminated. Assume that <span class="math inline">\(g(x)\)</span> has maximal column rank for all <span class="math inline">\(x\in\mathcal{X}\)</span>. Denoting by <span class="math inline">\(g^\perp(x)\)</span> a maximal rank annihilator of <span class="math inline">\(g(x)\)</span>, premultiplication of both sides of the equation above by <span class="math inline">\(g^\perp(x)\)</span> results in</p>
+<p><span class="math display">\[
+g^\perp(x)[J(x) - R(x)] \frac{\partial H}{\partial x}(x) = g^\perp(x)[J_d(x) - R_d(x)]\frac{\partial H_d}{\partial x}(x).
+\]</span></p>
+<p>This is called the <span class="tcr">IDA-PBC matching equation</span>. IDA-PBC is concerned with finding <span class="math inline">\(J_d,R_d\)</span> and <span class="math inline">\(H_d\)</span> satisfying the equation above such that <span class="math inline">\(H_d\)</span> has its minimum at the desired equilibrium <span class="math inline">\(x^\ast\)</span>. Once the matching equation has been solved, the required state feedback <span class="math inline">\(u=\alpha(x)\)</span> follows, and is uniquely given as</p>
+<p><span class="math display">\[
+\alpha(x) = \left(g^T(x)g(x)\right)^{-1}g^T(x)\times\left(\left[J_d(x) - R_d(x)\right]\frac{\partial H_d}{\partial x}(x) - \left[J(x) - R(x)\right]\frac{\partial H}{\partial x}(x)\right).
+\]</span></p>
+<p><span class="citation" data-cites="AvdS2000l2Gain">Van der Schaft (<a href="#ref-AvdS2000l2Gain" role="doc-biblioref">2000</a>)</span> mentions the main problem with IDA-PBC: Solving the IDA-PBC matching equation can be a tedious process; basically because there are many degrees of freedom <span class="math inline">\(J_d\)</span>, <span class="math inline">\(R_d\)</span> in order to construct <span class="math inline">\(H_d\)</span> having its minimum at <span class="math inline">\(x^\ast\)</span>.</p>
 </section>
 <section id="control-by-energy-routing" class="level3">
 <h3 class="anchored" data-anchor-id="control-by-energy-routing">Control by Energy-routing</h3>
